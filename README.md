@@ -1,2 +1,3 @@
-# l33t
-Silly leetcode repo
+# leetcode
+
+Repo with leetcode exercises and experiments
