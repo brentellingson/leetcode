@@ -1,4 +1,4 @@
-// package main is another attempt to implement a heap sort from memory.
+// package main implements heap sort as described in https://en.wikipedia.org/wiki/Heapsort
 package main
 
 import (
@@ -38,14 +38,6 @@ func sort(count int) {
 	fmt.Println(arr)
 }
 
-func makerandom(count int, n int) []int {
-	rslt := make([]int, 0, count)
-	for range count {
-		rslt = append(rslt, rand.Intn(n))
-	}
-	return rslt
-}
-
 func heapsort[S ~[]E, E any](arr S, cmp func(a, b E) int) {
 	swap := func(a, b int) {
 		arr[a], arr[b] = arr[b], arr[a]
@@ -68,6 +60,7 @@ func heapsort[S ~[]E, E any](arr S, cmp func(a, b E) int) {
 			swap(0, end)
 		}
 
+		// sift-down: Repair the heap whose root element is at index 'start', assuming the heaps rooted at its children are valid
 		root := start
 		for root*2+1 < end {
 			left, right := root*2+1, root*2+2
